@@ -44,15 +44,17 @@ public class JacksonBug {
 	public static void main(String[] args) throws JsonParseException, JsonMappingException, IOException {
 		String json = 
 			"{" +
-			        "\"first\":\"Bob\"" +
-			        ", \"last\":\"Builder\"" +
-			        ", \"eyeColor\":\"brown\"" +
+                    "\"one\":\"one\"" +
+                    ", \"first\":\"Bob\"" +
+                    ", \"two\":\"two\"" +
+                    ", \"last\":\"Builder\"" +
+			        ", \"three\":\"three\"" +
 			"}";
 		
 		ObjectMapper mapper = new ObjectMapper();
 		JacksonBug bug = mapper.readValue(json, JacksonBug.class);
 		System.out.println(bug.getData());
-		if (bug.getData().size() > 0) {
+		if (bug.getData().size() == 3) {
 			System.out.println("SUCCESS!!!");
 		} else {
 			System.out.println("back to the drawing board...");
